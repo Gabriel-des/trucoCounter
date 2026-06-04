@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvPlayerOneName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Player 1:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlayerOnePoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/tvPlayerOneName"
+        app:layout_constraintTop_toTopOf="@+id/tvPlayerOneName" />
+
+    <Button
+        android:id="@+id/btPlusOnePlayerOne"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="+1"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerOneName"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerOneName" />
+
+    <Button
+        android:id="@+id/btPlusTreePlayerOne"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+3"
+        app:layout_constraintStart_toEndOf="@+id/btPlusOnePlayerOne"
+        app:layout_constraintTop_toTopOf="@+id/btPlusOnePlayerOne" />
+
+    <Button
+        android:id="@+id/btPlusSixPlayerOne"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+6"
+        app:layout_constraintStart_toEndOf="@+id/btPlusTreePlayerOne"
+        app:layout_constraintTop_toTopOf="@+id/btPlusTreePlayerOne" />
+
+    <Button
+        android:id="@+id/btPlusNinePlayerOne"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+9"
+        app:layout_constraintStart_toEndOf="@+id/btPlusSixPlayerOne"
+        app:layout_constraintTop_toTopOf="@+id/btPlusSixPlayerOne" />
+
+    <Button
+        android:id="@+id/btPlusTwelvePlayerOne"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+12"
+        app:layout_constraintStart_toEndOf="@+id/btPlusNinePlayerOne"
+        app:layout_constraintTop_toTopOf="@+id/btPlusNinePlayerOne" />
+
+    <TextView
+        android:id="@+id/tvPlayerTwoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Player 2:"
+        app:layout_constraintStart_toStartOf="@+id/btPlusOnePlayerOne"
+        app:layout_constraintTop_toBottomOf="@+id/btPlusOnePlayerOne" />
+
+    <TextView
+        android:id="@+id/tvPlayerTwoPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/tvPlayerTwoName"
+        app:layout_constraintTop_toTopOf="@+id/tvPlayerTwoName" />
+
+    <Button
+        android:id="@+id/btPlusOnePlayerTwo"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="+1"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerTwoName"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerTwoName" />
+
+    <Button
+        android:id="@+id/btPlusSixPlayerTwo"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+6"
+        app:layout_constraintStart_toEndOf="@+id/btPlusTreePlayerTwo"
+        app:layout_constraintTop_toTopOf="@+id/btPlusTreePlayerTwo" />
+
+    <Button
+        android:id="@+id/btPlusNinePlayerTwo"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+9"
+        app:layout_constraintStart_toEndOf="@+id/btPlusSixPlayerTwo"
+        app:layout_constraintTop_toTopOf="@+id/btPlusSixPlayerTwo" />
+
+    <Button
+        android:id="@+id/btPlusTwelvePlayerTwo"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+12"
+        app:layout_constraintStart_toEndOf="@+id/btPlusNinePlayerTwo"
+        app:layout_constraintTop_toTopOf="@+id/btPlusNinePlayerTwo" />
+
+    <Button
+        android:id="@+id/btPlusTreePlayerTwo"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="+3"
+        app:layout_constraintStart_toEndOf="@+id/btPlusOnePlayerTwo"
+        app:layout_constraintTop_toTopOf="@+id/btPlusOnePlayerTwo" />
+
+    <Button
+        android:id="@+id/btMatchHistory"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Match History"
+        app:layout_constraintStart_toStartOf="@+id/btPlusOnePlayerTwo"
+        app:layout_constraintTop_toBottomOf="@+id/btPlusOnePlayerTwo" />
+
+    <Button
+        android:id="@+id/btCleanHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Clean History"
+        app:layout_constraintStart_toStartOf="@+id/btMatchHistory"
+        app:layout_constraintTop_toBottomOf="@+id/btMatchHistory" />
+
+    <Button
+        android:id="@+id/btTellNames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Tell Names"
+        app:layout_constraintStart_toStartOf="@+id/btCleanHistory"
+        app:layout_constraintTop_toBottomOf="@+id/btCleanHistory" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
