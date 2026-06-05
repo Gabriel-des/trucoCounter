@@ -1,5 +1,6 @@
 package com.example.trucocounter.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -30,10 +31,9 @@ class MainActivity : AppCompatActivity() {
             if (data != null) {
                 val updatedPlayerOne = IntentCompat.getSerializableExtra(data, "Player one", Player::class.java)
                 val updatedPlayerTwo = IntentCompat.getSerializableExtra(data, "Player two", Player::class.java)
-                
-                if (updatedPlayerOne != null) playerOne = updatedPlayerOne
-                if (updatedPlayerTwo != null) playerTwo = updatedPlayerTwo
-                
+
+                updatedPlayerOne?.let { playerOne.name = it.name }
+                updatedPlayerTwo?.let { playerTwo.name = it.name }
                 updateUI()
             }
         }
@@ -86,8 +86,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkScoreBoard(player: Player) {
         if (player.score >= MAX_SCORE) {
             player.wins += 1
-            val builder = AlertDialog.Builder(this)
-            builder
+            AlertDialog.Builder(this)
                 .setMessage("${player.name} wins this match!")
                 .setPositiveButton("OK") { dialog, _ ->
                     dialog.dismiss()
@@ -104,11 +103,12 @@ class MainActivity : AppCompatActivity() {
         updateUI()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateUI() {
-        binding.tvPlayerOneName.text = playerOne.name
+        binding.tvPlayerOneName.text = "${playerOne.name}:"
         binding.tvPlayerOnePoints.text = playerOne.score.toString()
         
-        binding.tvPlayerTwoName.text = playerTwo.name
+        binding.tvPlayerTwoName.text = "${playerTwo.name}:"
         binding.tvPlayerTwoPoints.text = playerTwo.score.toString()
     }
 
@@ -124,12 +124,7 @@ class MainActivity : AppCompatActivity() {
         playerOne.wins = 0
         playerTwo.wins = 0
         resetMatch()
-
-        Toast.makeText(
-            this,
-            "Match history was cleaned",
-            Toast.LENGTH_SHORT
-        ).show()
+        Toast.makeText(this, "Match history was cleaned", Toast.LENGTH_SHORT).show()
     }
 
     fun changePlayerNames() {
