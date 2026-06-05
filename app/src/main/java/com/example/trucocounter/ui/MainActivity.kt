@@ -112,7 +112,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showMatchHistory() {
-        val intent = Intent(this, matchHistoryActivity::class.java).apply {
+        val intent = Intent(this, MatchHistoryActivity::class.java).apply {
             putExtra("Player one", playerOne)
             putExtra("Player two", playerTwo)
         }
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun changePlayerNames() {
-        val intent = Intent(this, changePlayersNamesActivity::class.java).apply {
+        val intent = Intent(this, ChangePlayersNamesActivity::class.java).apply {
             putExtra("Player one", playerOne)
             putExtra("Player two", playerTwo)
         }
