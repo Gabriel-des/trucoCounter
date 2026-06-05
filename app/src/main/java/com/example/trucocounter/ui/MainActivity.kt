@@ -13,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.trucocounter.model.Player
 import com.example.trucocounter.model.PlayerPoints
-import com.example.trucocounter.R
 import com.example.trucocounter.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
