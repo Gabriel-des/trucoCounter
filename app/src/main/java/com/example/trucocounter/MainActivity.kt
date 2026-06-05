@@ -3,6 +3,7 @@ package com.example.trucocounter
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -60,11 +61,14 @@ class MainActivity : AppCompatActivity() {
     private fun checkScoreBoard(player: Player) {
         if (player.score >= MAX_SCORE) {
             player.wins += 1
-            Toast.makeText(
-                this,
-                "${player.name} wins this match!",
-                Toast.LENGTH_SHORT
-            ).show()
+            val builder = AlertDialog.Builder(this)
+            builder
+                .setMessage("${player.name} wins this match!")
+                .setPositiveButton("OK") { dialog, id ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
             resetMatch()
         }
     }
@@ -87,5 +91,11 @@ class MainActivity : AppCompatActivity() {
         playerOne.wins = 0
         playerTwo.wins = 0
         resetMatch()
+
+        Toast.makeText(
+            this,
+            "Match history was cleaned",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
