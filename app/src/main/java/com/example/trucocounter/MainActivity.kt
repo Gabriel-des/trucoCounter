@@ -1,6 +1,7 @@
 package com.example.trucocounter
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,14 +11,18 @@ import com.example.trucocounter.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var scorePlayerOne = 0
-    private var scorePlayerTwo = 0
+
+    private val playerOne = Player("Player One")
+    private val playerTwo = Player("Player Two")
+
+    companion object {
+        private const val MAX_SCORE = 12
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         enableEdgeToEdge()
         setContentView(binding.main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -27,35 +32,52 @@ class MainActivity : AppCompatActivity() {
         }
 
         setupClickListeners()
+        updateUI()
     }
 
     private fun setupClickListeners() {
-        binding.btPlusOnePlayerOne.setOnClickListener { addPointsToPlayer(PlayerPoints.ONE, Player.ONE) }
-        binding.btPlusTreePlayerOne.setOnClickListener { addPointsToPlayer(PlayerPoints.THREE, Player.ONE) }
-        binding.btPlusSixPlayerOne.setOnClickListener { addPointsToPlayer(PlayerPoints.SIX, Player.ONE) }
-        binding.btPlusNinePlayerOne.setOnClickListener { addPointsToPlayer(PlayerPoints.NINE, Player.ONE) }
-        binding.btPlusTwelvePlayerOne.setOnClickListener { addPointsToPlayer(PlayerPoints.TWELVE, Player.ONE) }
+        binding.btPlusOnePlayerOne.setOnClickListener { addPointsToPlayer(playerOne, PlayerPoints.ONE) }
+        binding.btPlusTreePlayerOne.setOnClickListener { addPointsToPlayer(playerOne, PlayerPoints.THREE) }
+        binding.btPlusSixPlayerOne.setOnClickListener { addPointsToPlayer(playerOne, PlayerPoints.SIX) }
+        binding.btPlusNinePlayerOne.setOnClickListener { addPointsToPlayer(playerOne, PlayerPoints.NINE) }
+        binding.btPlusTwelvePlayerOne.setOnClickListener { addPointsToPlayer(playerOne, PlayerPoints.TWELVE) }
 
-        binding.btPlusOnePlayerTwo.setOnClickListener { addPointsToPlayer(PlayerPoints.ONE, Player.TWO) }
-        binding.btPlusTreePlayerTwo.setOnClickListener { addPointsToPlayer(PlayerPoints.THREE, Player.TWO) }
-        binding.btPlusSixPlayerTwo.setOnClickListener { addPointsToPlayer(PlayerPoints.SIX, Player.TWO) }
-        binding.btPlusNinePlayerTwo.setOnClickListener { addPointsToPlayer(PlayerPoints.NINE, Player.TWO) }
-        binding.btPlusTwelvePlayerTwo.setOnClickListener { addPointsToPlayer(PlayerPoints.TWELVE, Player.TWO) }
+        binding.btPlusOnePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.ONE) }
+        binding.btPlusTreePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.THREE) }
+        binding.btPlusSixPlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.SIX) }
+        binding.btPlusNinePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.NINE) }
+        binding.btPlusTwelvePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.TWELVE) }
     }
 
-    private fun addPointsToPlayer(points: PlayerPoints, player: Player) {
-        if (player == Player.ONE) {
-            scorePlayerOne += points.value
-            binding.tvPlayerOnePoints.text = scorePlayerOne.toString()
-        } else {
-            scorePlayerTwo += points.value
-            binding.tvPlayerTwoPoints.text = scorePlayerTwo.toString()
+    private fun addPointsToPlayer(player: Player, points: PlayerPoints) {
+        player.score += points.value
+        updateUI()
+        checkScoreBoard(player)
+    }
+
+    private fun checkScoreBoard(player: Player) {
+        if (player.score >= MAX_SCORE) {
+            player.wins += 1
+            Toast.makeText(
+                this,
+                "${player.name} wins this match!",
+                Toast.LENGTH_SHORT
+            ).show()
+            resetMatch()
         }
-
-        checkScoreBoard()
     }
 
-    private fun checkScoreBoard() {
-        TODO("Not yet implemented")
+    private fun resetMatch() {
+        playerOne.score = 0
+        playerTwo.score = 0
+        updateUI()
+    }
+
+    private fun updateUI() {
+        binding.tvPlayerOneName.text = playerOne.name
+        binding.tvPlayerOnePoints.text = playerOne.score.toString()
+        
+        binding.tvPlayerTwoName.text = playerTwo.name
+        binding.tvPlayerTwoPoints.text = playerTwo.score.toString()
     }
 }
