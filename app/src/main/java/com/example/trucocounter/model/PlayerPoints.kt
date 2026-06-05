@@ -1,4 +1,4 @@
-package com.example.trucocounter
+package com.example.trucocounter.model
 
 enum class PlayerPoints(val value: Int) {
     ONE(1),

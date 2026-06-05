@@ -1,4 +1,4 @@
-package com.example.trucocounter
+package com.example.trucocounter.model
 
 data class Player(
     var name: String,
