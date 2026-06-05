@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrucoCounter">
         <activity
+            android:name=".changePlayersNamesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".matchHistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
