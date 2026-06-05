@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.trucocounter.R
 import com.example.trucocounter.databinding.ActivityChangePlayersNamesBinding
 import com.example.trucocounter.model.Player
 
-class changePlayersNamesActivity : AppCompatActivity() {
+class ChangePlayersNamesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChangePlayersNamesBinding
     private val playerOne by lazy { IntentCompat.getSerializableExtra(intent, "Player one", Player::class.java) }
