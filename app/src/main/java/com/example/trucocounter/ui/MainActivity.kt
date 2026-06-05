@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
+import androidx.core.os.BundleCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.trucocounter.model.Player
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val MAX_SCORE = 12
+        private const val KEY_PLAYER_ONE = "player_one_state"
+        private const val KEY_PLAYER_TWO = "player_two_state"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,8 +57,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        if (savedInstanceState != null) {
+            BundleCompat.getSerializable(savedInstanceState, KEY_PLAYER_ONE, Player::class.java)?.let {
+                playerOne = it
+            }
+            BundleCompat.getSerializable(savedInstanceState, KEY_PLAYER_TWO, Player::class.java)?.let {
+                playerTwo = it
+            }
+        }
+
         setupClickListeners()
         updateUI()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable(KEY_PLAYER_ONE, playerOne)
+        outState.putSerializable(KEY_PLAYER_TWO, playerTwo)
     }
 
     private fun setupClickListeners() {

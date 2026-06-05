@@ -1,11 +1,11 @@
 package com.example.trucocounter.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
+import androidx.core.os.BundleCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.trucocounter.databinding.ActivityChangePlayersNamesBinding
@@ -14,8 +14,14 @@ import com.example.trucocounter.model.Player
 class ChangePlayersNamesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChangePlayersNamesBinding
-    private val playerOne by lazy { IntentCompat.getSerializableExtra(intent, "Player one", Player::class.java) }
-    private val playerTwo by lazy { IntentCompat.getSerializableExtra(intent, "Player two", Player::class.java) }
+    
+    private var playerOne: Player? = null
+    private var playerTwo: Player? = null
+
+    companion object {
+        private const val KEY_P1 = "p1_state"
+        private const val KEY_P2 = "p2_state"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,21 +29,31 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
         binding = ActivityChangePlayersNamesBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+        
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        setupUI()
+        if (savedInstanceState != null) {
+            playerOne = BundleCompat.getSerializable(savedInstanceState, KEY_P1, Player::class.java)
+            playerTwo = BundleCompat.getSerializable(savedInstanceState, KEY_P2, Player::class.java)
+        } else {
+            playerOne = IntentCompat.getSerializableExtra(intent, "Player one", Player::class.java)
+            playerTwo = IntentCompat.getSerializableExtra(intent, "Player two", Player::class.java)
+
+            binding.etPlayerOneEditName.setText(playerOne?.name)
+            binding.etPlayerTwoEditName.setText(playerTwo?.name)
+        }
+
         setupClickListeners()
     }
 
-    private fun setupUI() {
-        binding.etPlayerOneEditName.setText(playerOne?.name)
-        binding.etPlayerTwoEditName.setText(playerTwo?.name)
-
-        updateLabels()
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable(KEY_P1, playerOne)
+        outState.putSerializable(KEY_P2, playerTwo)
     }
 
     private fun setupClickListeners() {
@@ -61,11 +77,5 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
         
         setResult(RESULT_OK, intent)
         finish()
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun updateLabels() {
-        binding.tvPlayerOneName.text = "Player One:"
-        binding.tvPlayerTwoName.text = "Player Two:"
     }
 }
