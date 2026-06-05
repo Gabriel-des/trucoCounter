@@ -7,4 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".ui.changePlayersNamesActivity">
 
+    <TextView
+        android:id="@+id/tvPlayerOneName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Player One:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPlayerTwoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Player Two:"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayerOneName"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayerOneName" />
+
+    <EditText
+        android:id="@+id/etPlayerOneEditName"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPlayerOneName"
+        app:layout_constraintStart_toEndOf="@+id/tvPlayerOneName"
+        app:layout_constraintTop_toTopOf="@+id/tvPlayerOneName" />
+
+    <EditText
+        android:id="@+id/etPlayerOneEditName2"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPlayerTwoName"
+        app:layout_constraintStart_toEndOf="@+id/tvPlayerTwoName"
+        app:layout_constraintTop_toTopOf="@+id/tvPlayerTwoName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btConfirmChangeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Confirm"
+        app:layout_constraintStart_toStartOf="@+id/etPlayerOneEditName2"
+        app:layout_constraintTop_toBottomOf="@+id/etPlayerOneEditName2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
