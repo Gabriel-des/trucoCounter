@@ -8,6 +8,7 @@ import androidx.core.content.IntentCompat
 import androidx.core.os.BundleCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.trucocounter.R
 import com.example.trucocounter.databinding.ActivityChangePlayersNamesBinding
 import com.example.trucocounter.model.Player
 
@@ -71,7 +72,7 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
         val nameTwo = binding.etPlayerTwoEditName.text.toString().trim()
 
         if (nameOne.isEmpty() || nameTwo.isEmpty()) {
-            Toast.makeText(this, "Names cannot be empty", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.names_cannot_be_empty), Toast.LENGTH_SHORT).show()
             return
         }
 

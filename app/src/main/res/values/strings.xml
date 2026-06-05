@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">trucoCounter</string>
-    <string name="player_one">Player One:</string>
-    <string name="player_two">Player Two:</string>
+    <string name="player_one">Player One</string>
     <string name="confirm">Confirm</string>
     <string name="_0" translatable="false">0</string>
     <string name="_plus_1" translatable="false">+1</string>
@@ -12,4 +11,8 @@
     <string name="match_history">Match History</string>
     <string name="clean_history">Clean History</string>
     <string name="tell_names">Tell Names</string>
+    <string name="names_cannot_be_empty">Names cannot be empty</string>
+    <string name="wins_this_match">%1$s wins this match!</string>
+    <string name="match_history_was_cleaned">Match history was cleaned</string>
+    <string name="player_two">Player Two</string>
 </resources>

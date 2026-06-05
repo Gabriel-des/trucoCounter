@@ -12,6 +12,7 @@ import androidx.core.content.IntentCompat
 import androidx.core.os.BundleCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.trucocounter.R
 import com.example.trucocounter.model.Player
 import com.example.trucocounter.model.PlayerPoints
 import com.example.trucocounter.databinding.ActivityMainBinding
@@ -20,8 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private var playerOne = Player("Player One")
-    private var playerTwo = Player("Player Two")
+    private var playerOne = Player("")
+    private var playerTwo = Player("")
 
     private val changeNamesLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -64,6 +65,9 @@ class MainActivity : AppCompatActivity() {
             BundleCompat.getSerializable(savedInstanceState, KEY_PLAYER_TWO, Player::class.java)?.let {
                 playerTwo = it
             }
+        } else {
+            playerOne = Player(getString(R.string.player_one))
+            playerTwo = Player(getString(R.string.player_two))
         }
 
         setupClickListeners()
@@ -104,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         if (player.score >= MAX_SCORE) {
             player.wins += 1
             AlertDialog.Builder(this)
-                .setMessage("${player.name} wins this match!")
+                .setMessage(getString(R.string.wins_this_match, player.name))
                 .setPositiveButton("OK") { dialog, _ ->
                     dialog.dismiss()
                 }
@@ -141,7 +145,7 @@ class MainActivity : AppCompatActivity() {
         playerOne.wins = 0
         playerTwo.wins = 0
         resetMatch()
-        Toast.makeText(this, "Match history was cleaned", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.match_history_was_cleaned), Toast.LENGTH_SHORT).show()
     }
 
     fun changePlayerNames() {
