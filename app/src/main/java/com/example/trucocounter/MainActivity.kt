@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         binding.btPlusSixPlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.SIX) }
         binding.btPlusNinePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.NINE) }
         binding.btPlusTwelvePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.TWELVE) }
+
+        binding.btCleanHistory.setOnClickListener { cleanMatchHistory() }
     }
 
     private fun addPointsToPlayer(player: Player, points: PlayerPoints) {
@@ -79,5 +81,11 @@ class MainActivity : AppCompatActivity() {
         
         binding.tvPlayerTwoName.text = playerTwo.name
         binding.tvPlayerTwoPoints.text = playerTwo.score.toString()
+    }
+
+    fun cleanMatchHistory() {
+        playerOne.wins = 0
+        playerTwo.wins = 0
+        resetMatch()
     }
 }
