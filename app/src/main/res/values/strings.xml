@@ -3,12 +3,12 @@
     <string name="player_one">Player One:</string>
     <string name="player_two">Player Two:</string>
     <string name="confirm">Confirm</string>
-    <string name="_0">0</string>
-    <string name="_plus_1">+1</string>
-    <string name="_plus_3">+3</string>
-    <string name="_plus_6">+6</string>
-    <string name="_plus_9">+9</string>
-    <string name="_plus_12">+12</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="_plus_1" translatable="false">+1</string>
+    <string name="_plus_3" translatable="false">+3</string>
+    <string name="_plus_6" translatable="false">+6</string>
+    <string name="_plus_9" translatable="false">+9</string>
+    <string name="_plus_12" translatable="false">+12</string>
     <string name="match_history">Match History</string>
     <string name="clean_history">Clean History</string>
     <string name="tell_names">Tell Names</string>

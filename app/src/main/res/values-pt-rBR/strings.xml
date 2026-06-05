@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">trucoCounter</string>
+    <string name="player_one">Jogador 1:</string>
+    <string name="player_two">Jogador 2:</string>
+    <string name="confirm">Confirmar</string>
+    <string name="match_history">Histórico de partidas</string>
+    <string name="clean_history">Limpar histórico</string>
+    <string name="tell_names">Informar Nomes</string>
+</resources>
