@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Player One:"
+        android:text="@string/player_one"
         app:layout_constraintBottom_toBottomOf="@+id/etPlayerOneEditName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/etPlayerOneEditName" />
@@ -21,7 +21,7 @@
         android:id="@+id/tvPlayerTwoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Player Two:"
+        android:text="@string/player_two"
         app:layout_constraintBottom_toBottomOf="@+id/etPlayerTwoEditName"
         app:layout_constraintStart_toStartOf="@+id/tvPlayerOneName"
         app:layout_constraintTop_toTopOf="@+id/etPlayerTwoEditName" />
@@ -34,10 +34,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="text"
         android:maxLength="15"
         app:layout_constraintStart_toEndOf="@+id/tvPlayerOneName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/etPlayerTwoEditName"
@@ -47,17 +49,19 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="text"
         android:maxLength="15"
         app:layout_constraintStart_toEndOf="@+id/tvPlayerTwoName"
-        app:layout_constraintTop_toBottomOf="@+id/etPlayerOneEditName" />
+        app:layout_constraintTop_toBottomOf="@+id/etPlayerOneEditName"
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/btConfirmChangePlayersName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Confirm"
+        android:text="@string/confirm"
         app:layout_constraintStart_toStartOf="@+id/etPlayerTwoEditName"
         app:layout_constraintTop_toBottomOf="@+id/etPlayerTwoEditName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

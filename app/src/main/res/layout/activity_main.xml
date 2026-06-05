@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Player 1:"
+        android:text="@string/player_one"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="0"
+        android:text="@string/_0"
         app:layout_constraintStart_toEndOf="@+id/tvPlayerOneName"
         app:layout_constraintTop_toTopOf="@+id/tvPlayerOneName" />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="+1"
+        android:text="@string/_plus_1"
         app:layout_constraintStart_toStartOf="@+id/tvPlayerOneName"
         app:layout_constraintTop_toBottomOf="@+id/tvPlayerOneName" />
 
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="+3"
+        android:text="@string/_plus_3"
         app:layout_constraintStart_toEndOf="@+id/btPlusOnePlayerOne"
         app:layout_constraintTop_toTopOf="@+id/btPlusOnePlayerOne" />
 
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="+6"
+        android:text="@string/_plus_6"
         app:layout_constraintStart_toEndOf="@+id/btPlusTreePlayerOne"
         app:layout_constraintTop_toTopOf="@+id/btPlusTreePlayerOne" />
 
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="+9"
+        android:text="@string/_plus_9"
         app:layout_constraintStart_toEndOf="@+id/btPlusSixPlayerOne"
         app:layout_constraintTop_toTopOf="@+id/btPlusSixPlayerOne" />
 
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="+12"
+        android:text="@string/_plus_12"
         app:layout_constraintStart_toEndOf="@+id/btPlusNinePlayerOne"
         app:layout_constraintTop_toTopOf="@+id/btPlusNinePlayerOne" />
 
@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Player 2:"
+        android:text="@string/player_two"
         app:layout_constraintStart_toStartOf="@+id/btPlusOnePlayerOne"
         app:layout_constraintTop_toBottomOf="@+id/btPlusOnePlayerOne" />
 
@@ -90,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="0"
+        android:text="@string/_0"
         app:layout_constraintStart_toEndOf="@+id/tvPlayerTwoName"
         app:layout_constraintTop_toTopOf="@+id/tvPlayerTwoName" />
 
@@ -100,9 +100,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="+1"
+        android:text="@string/_plus_1"
         app:layout_constraintStart_toStartOf="@+id/tvPlayerTwoName"
         app:layout_constraintTop_toBottomOf="@+id/tvPlayerTwoName" />
+
+    <Button
+        android:id="@+id/btPlusTreePlayerTwo"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/_plus_3"
+        app:layout_constraintStart_toEndOf="@+id/btPlusOnePlayerTwo"
+        app:layout_constraintTop_toTopOf="@+id/btPlusOnePlayerTwo" />
 
     <Button
         android:id="@+id/btPlusSixPlayerTwo"
@@ -110,7 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="+6"
+        android:text="@string/_plus_6"
         app:layout_constraintStart_toEndOf="@+id/btPlusTreePlayerTwo"
         app:layout_constraintTop_toTopOf="@+id/btPlusTreePlayerTwo" />
 
@@ -120,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="+9"
+        android:text="@string/_plus_9"
         app:layout_constraintStart_toEndOf="@+id/btPlusSixPlayerTwo"
         app:layout_constraintTop_toTopOf="@+id/btPlusSixPlayerTwo" />
 
@@ -130,19 +140,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="+12"
+        android:text="@string/_plus_12"
         app:layout_constraintStart_toEndOf="@+id/btPlusNinePlayerTwo"
         app:layout_constraintTop_toTopOf="@+id/btPlusNinePlayerTwo" />
-
-    <Button
-        android:id="@+id/btPlusTreePlayerTwo"
-        style="@style/Widget.Material3.Button.IconButton.Filled"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="+3"
-        app:layout_constraintStart_toEndOf="@+id/btPlusOnePlayerTwo"
-        app:layout_constraintTop_toTopOf="@+id/btPlusOnePlayerTwo" />
 
     <Button
         android:id="@+id/btMatchHistory"
@@ -150,7 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Match History"
+        android:text="@string/match_history"
         app:layout_constraintStart_toStartOf="@+id/btPlusOnePlayerTwo"
         app:layout_constraintTop_toBottomOf="@+id/btPlusOnePlayerTwo" />
 
@@ -159,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Clean History"
+        android:text="@string/clean_history"
         app:layout_constraintStart_toStartOf="@+id/btMatchHistory"
         app:layout_constraintTop_toBottomOf="@+id/btMatchHistory" />
 
@@ -168,7 +168,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Tell Names"
+        android:text="@string/tell_names"
         app:layout_constraintStart_toStartOf="@+id/btCleanHistory"
         app:layout_constraintTop_toBottomOf="@+id/btCleanHistory" />
 
