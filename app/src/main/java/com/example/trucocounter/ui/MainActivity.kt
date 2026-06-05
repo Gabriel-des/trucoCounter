@@ -1,10 +1,13 @@
 package com.example.trucocounter.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.trucocounter.model.Player
@@ -16,8 +19,25 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val playerOne = Player("Player One")
-    private val playerTwo = Player("Player Two")
+    private var playerOne = Player("Player One")
+    private var playerTwo = Player("Player Two")
+
+    private val changeNamesLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            if (data != null) {
+                val updatedPlayerOne = IntentCompat.getSerializableExtra(data, "Player one", Player::class.java)
+                val updatedPlayerTwo = IntentCompat.getSerializableExtra(data, "Player two", Player::class.java)
+                
+                if (updatedPlayerOne != null) playerOne = updatedPlayerOne
+                if (updatedPlayerTwo != null) playerTwo = updatedPlayerTwo
+                
+                updateUI()
+            }
+        }
+    }
 
     companion object {
         private const val MAX_SCORE = 12
@@ -28,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         
         binding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(binding.main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -52,7 +72,9 @@ class MainActivity : AppCompatActivity() {
         binding.btPlusNinePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.NINE) }
         binding.btPlusTwelvePlayerTwo.setOnClickListener { addPointsToPlayer(playerTwo, PlayerPoints.TWELVE) }
 
+        binding.btMatchHistory.setOnClickListener { showMatchHistory() }
         binding.btCleanHistory.setOnClickListener { cleanMatchHistory() }
+        binding.btTellNames.setOnClickListener { changePlayerNames() }
     }
 
     private fun addPointsToPlayer(player: Player, points: PlayerPoints) {
@@ -67,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
             builder
                 .setMessage("${player.name} wins this match!")
-                .setPositiveButton("OK") { dialog, id ->
+                .setPositiveButton("OK") { dialog, _ ->
                     dialog.dismiss()
                 }
                 .create()
@@ -90,6 +112,14 @@ class MainActivity : AppCompatActivity() {
         binding.tvPlayerTwoPoints.text = playerTwo.score.toString()
     }
 
+    fun showMatchHistory() {
+        val intent = Intent(this, matchHistoryActivity::class.java).apply {
+            putExtra("Player one", playerOne)
+            putExtra("Player two", playerTwo)
+        }
+        startActivity(intent)
+    }
+
     fun cleanMatchHistory() {
         playerOne.wins = 0
         playerTwo.wins = 0
@@ -100,5 +130,13 @@ class MainActivity : AppCompatActivity() {
             "Match history was cleaned",
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    fun changePlayerNames() {
+        val intent = Intent(this, changePlayersNamesActivity::class.java).apply {
+            putExtra("Player one", playerOne)
+            putExtra("Player two", playerTwo)
+        }
+        changeNamesLauncher.launch(intent)
     }
 }
