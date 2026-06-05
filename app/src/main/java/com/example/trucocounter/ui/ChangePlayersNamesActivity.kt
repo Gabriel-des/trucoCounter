@@ -1,6 +1,8 @@
 package com.example.trucocounter.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
@@ -27,8 +29,15 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
             insets
         }
 
+        setupUI()
         setupClickListeners()
-        setPlayersNames()
+    }
+
+    private fun setupUI() {
+        binding.etPlayerOneEditName.setText(playerOne?.name)
+        binding.etPlayerTwoEditName.setText(playerTwo?.name)
+
+        updateLabels()
     }
 
     private fun setupClickListeners() {
@@ -36,8 +45,16 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
     }
 
     private fun confirmChangeName() {
-        playerOne?.name = binding.etPlayerOneEditName.text.toString()
-        playerTwo?.name = binding.etPlayerTwoEditName.text.toString()
+        val nameOne = binding.etPlayerOneEditName.text.toString().trim()
+        val nameTwo = binding.etPlayerTwoEditName.text.toString().trim()
+
+        if (nameOne.isEmpty() || nameTwo.isEmpty()) {
+            Toast.makeText(this, "Names cannot be empty", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        playerOne?.name = nameOne
+        playerTwo?.name = nameTwo
         
         intent.putExtra("Player one", playerOne)
         intent.putExtra("Player two", playerTwo)
@@ -46,8 +63,9 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun setPlayersNames() {
-        binding.tvPlayerOneName.text = playerOne?.name
-        binding.tvPlayerTwoName.text = playerTwo?.name
+    @SuppressLint("SetTextI18n")
+    private fun updateLabels() {
+        binding.tvPlayerOneName.text = "Player One:"
+        binding.tvPlayerTwoName.text = "Player Two:"
     }
 }
