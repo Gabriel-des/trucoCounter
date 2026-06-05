@@ -48,6 +48,7 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
         }
 
         setupClickListeners()
+        setupPlayersNames()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -58,6 +59,11 @@ class ChangePlayersNamesActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btConfirmChangePlayersName.setOnClickListener { confirmChangeName() }
+    }
+
+    private fun setupPlayersNames() {
+        binding.etPlayerOneEditName.setText(playerOne?.name)
+        binding.etPlayerTwoEditName.setText(playerTwo?.name)
     }
 
     private fun confirmChangeName() {
