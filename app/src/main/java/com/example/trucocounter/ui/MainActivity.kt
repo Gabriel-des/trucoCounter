@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import androidx.core.os.BundleCompat
@@ -16,6 +15,7 @@ import com.example.trucocounter.R
 import com.example.trucocounter.model.Player
 import com.example.trucocounter.model.PlayerPoints
 import com.example.trucocounter.databinding.ActivityMainBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -107,12 +107,13 @@ class MainActivity : AppCompatActivity() {
     private fun checkScoreBoard(player: Player) {
         if (player.score >= MAX_SCORE) {
             player.wins += 1
-            AlertDialog.Builder(this)
+            MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.winner))
                 .setMessage(getString(R.string.wins_this_match, player.name))
-                .setPositiveButton("OK") { dialog, _ ->
+                .setCancelable(false)
+                .setPositiveButton(getString(android.R.string.ok)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                .create()
                 .show()
             resetMatch()
         }

@@ -10,4 +10,5 @@
     <string name="names_cannot_be_empty">Nomes não podem ficar em branco</string>
     <string name="wins_this_match">%1$s ganhou a partida!</string>
     <string name="match_history_was_cleaned">O histórico foi limpo</string>
+    <string name="winner">Vencedor!</string>
 </resources>
