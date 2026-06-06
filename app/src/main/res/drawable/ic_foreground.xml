@@ -1,0 +1,65 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- ESCALA: 0.55 (Fica com folga dentro do ícone) -->
+    <!-- TRANSLATE: Centraliza o conjunto (54,54 é o centro do viewport) -->
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:scaleX="0.55"
+        android:scaleY="0.55"
+        android:translateX="4"
+        android:translateY="-4">
+
+        <!-- Carta de baixo (Sombra/Cinza) -->
+        <path
+            android:fillColor="#E0E0E0"
+            android:pathData="M 30 24 C 26 24 24 26 24 30 L 24 78 C 24 82 26 84 30 84 L 56 84 C 60 84 62 82 62 78 L 62 30 C 62 26 60 24 56 24 Z" />
+
+        <!-- Carta principal (Branca) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 44 32 C 40 32 38 34 38 38 L 38 86 C 38 90 40 92 44 92 L 70 92 C 74 92 76 90 76 86 L 76 38 C 76 34 74 32 70 32 Z" />
+
+        <!-- Símbolos do Às (Topo Esquerdo) -->
+        <group
+            android:translateX="43"
+            android:translateY="38">
+            <path
+                android:fillColor="#D32F2F"
+                android:pathData="M 0 0 L -1.2 4 H -0.6 L -0.4 3 H 0.4 L 0.6 4 H 1.2 L 0 0 Z M 0 0.8 L 0.3 2.2 H -0.3 Z" />
+            <path
+                android:fillColor="#D32F2F"
+                android:pathData="M 0 8.5 C 0 8.5 -1.2 7.3 -1.2 6 C -1.2 5.3 -0.8 5 0 5.6 C 0.8 5 1.2 5.3 1.2 6 C 1.2 7.3 0 8.5 0 8.5 Z" />
+        </group>
+
+        <!-- Símbolos do Às (Base Direita - Invertido) -->
+        <group
+            android:translateX="71"
+            android:translateY="86"
+            android:rotation="180">
+            <path
+                android:fillColor="#D32F2F"
+                android:pathData="M 0 0 L -1.2 4 H -0.6 L -0.4 3 H 0.4 L 0.6 4 H 1.2 L 0 0 Z M 0 0.8 L 0.3 2.2 H -0.3 Z" />
+            <path
+                android:fillColor="#D32F2F"
+                android:pathData="M 0 8.5 C 0 8.5 -1.2 7.3 -1.2 6 C -1.2 5.3 -0.8 5 0 5.6 C 0.8 5 1.2 5.3 1.2 6 C 1.2 7.3 0 8.5 0 8.5 Z" />
+        </group>
+
+        <!-- Coração Central -->
+        <group
+            android:pivotX="57"
+            android:pivotY="57"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:translateY="4.65">
+            <path
+                android:fillColor="#D32F2F"
+                android:pathData="M 57 73 C 57 73 47 62 47 52 C 47 45 52 42 57 49 C 62 42 67 45 67 52 C 67 62 57 73 57 73 Z" />
+        </group>
+    </group>
+
+</vector>
